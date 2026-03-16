@@ -2,7 +2,6 @@
 
 # Configuration
 INTERVAL=30 # Seconds between checks
-COMMIT_MSG="Auto-commit: update on $(date +'%Y-%m-%d %H:%M:%S')"
 
 echo "Starting auto-commit script..."
 echo "Interval: $INTERVAL seconds"
