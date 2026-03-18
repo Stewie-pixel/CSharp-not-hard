@@ -35,12 +35,6 @@ Homestead.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
-# Visual Studio
-.vs/*
-!.vs/Projects.json
-!.vs/SolutionName/v16/ProjectName/ProjectName.csproj
-!.vs/SolutionName/v16/ProjectName/ProjectName.sln
-
 # Local History for Visual Studio Code
 .history/
 
