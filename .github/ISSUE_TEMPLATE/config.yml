@@ -1,0 +1,109 @@
+# File path: .github/ISSUE_TEMPLATE/config.yml
+
+blank_issues_enabled: false  # Disallow blank issues; users must choose a template
+contact_links:
+  - name: Support
+    about: "For urgent help or questions not related to bugs/features"
+    email: hanchivi39@gmail.com
+
+# Issue templates configuration
+issue_templates:
+  - name: Bug Report
+    description: "Report a bug in the project"
+    title: "[BUG] "
+    labels: ["bug", "needs triage"]
+    body:
+      - type: markdown
+        attributes:
+          value: |
+            **Describe the bug**
+            A clear and concise description of what the bug is.
+      - type: textarea
+        id: steps_to_reproduce
+        attributes:
+          label: "Steps to reproduce"
+          description: "List the steps to reproduce the behavior"
+          placeholder: |
+            1. Go to '...'
+            2. Click on '...'
+            3. See error
+          required: true
+      - type: textarea
+        id: expected_behavior
+        attributes:
+          label: "Expected behavior"
+          description: "What you expected to happen"
+          required: true
+      - type: textarea
+        id: actual_behavior
+        attributes:
+          label: "Actual behavior"
+          description: "What actually happened"
+          required: true
+      - type: dropdown
+        id: severity
+        attributes:
+          label: "Severity"
+          description: "How severe is the bug?"
+          options:
+            - Critical
+            - High
+            - Medium
+            - Low
+          required: true
+      - type: checkboxes
+        id: environment
+        attributes:
+          label: "Environment"
+          description: "Specify environment details"
+          options:
+            - OS: Windows
+            - OS: macOS
+            - OS: Linux
+            - Browser: Chrome
+            - Browser: Firefox
+            - Browser: Safari
+          required: true
+
+  - name: Feature Request
+    description: "Suggest a new feature or improvement"
+    title: "[FEATURE] "
+    labels: ["enhancement"]
+    body:
+      - type: markdown
+        attributes:
+          value: |
+            **Describe the feature**
+            A clear and concise description of what you want to happen.
+      - type: textarea
+        id: use_case
+        attributes:
+          label: "Use case"
+          description: "Explain why this feature would be useful"
+          required: true
+      - type: textarea
+        id: alternatives
+        attributes:
+          label: "Alternatives considered"
+          description: "Other ways you tried to solve this problem (optional)"
+          required: false
+
+  - name: Documentation
+    description: "Report issues with the documentation"
+    title: "[DOC] "
+    labels: ["documentation"]
+    body:
+      - type: markdown
+        attributes:
+          value: |
+            **Describe the documentation issue**
+            Include the page, section, or snippet that needs updating.
+      - type: textarea
+        id: suggestion
+        attributes:
+          label: "Suggested fix"
+          description: "How can this be improved?"
+          required: true
+
+# Optional: issue template chooser settings
+hidden: false   # Show template chooser to users
