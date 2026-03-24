@@ -25,8 +25,8 @@ while true; do
       FILENAME=$(basename "$file")
       MESSAGE=$(echo "$FILENAME" | sed 's/_/ /g' | sed 's/\..*$//')
       
-      git commit -m "feat: Add $MESSAGE"
-    
+      git commit -m "feat: add $MESSAGE as first commit"
+   
       echo "Committed $file as '$MESSAGE'"
       
     done

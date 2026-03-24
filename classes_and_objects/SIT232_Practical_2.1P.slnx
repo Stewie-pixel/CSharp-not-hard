@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Task1_Mobile/Task1_Mobile.csproj" />
+    <Project Path="src/Task2_Employee/Task2_Employee.csproj" />
+    <Project Path="src/Task3_Car/Task3_Car.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SIT232_Practical_2.1P.Tests/SIT232_Practical_2.1P.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Task3: Car (Debug)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/classes_and_objects/src/Task3_Car/bin/Debug/net10.0/Task3_Car.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/classes_and_objects/src/Task3_Car",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Task1: Mobile (Debug)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/classes_and_objects/src/Task1_Mobile/bin/Debug/net10.0/Task1_Mobile.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/classes_and_objects/src/Task1_Mobile",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Task2: Employee (Debug)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/classes_and_objects/src/Task2_Employee/bin/Debug/net10.0/Task2_Employee.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/classes_and_objects/src/Task2_Employee",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
+    ]
+}
