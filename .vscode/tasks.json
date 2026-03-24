@@ -36,6 +36,18 @@
                 "${workspaceFolder}/SIT232_Practical_2.1P.sln"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build TheAccountClass",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/the_account_class/TheAccountClass.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

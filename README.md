@@ -1,77 +1,69 @@
-# SIT232 Practical Tasks 1.1P & 1.2P: Selection, Casting, and Repetition
+# SIT232 Object-Oriented Development: Practical Tasks
 
-This repository contains the implementation of Practical Tasks 1.1P and 1.2P for SIT232 (Object-Oriented Development). These tasks focus on C# control structures, including selection (`if`, `switch`), casting, and repetition (`for`, `while`, `do...while` loops).
-
-## Project Structure
-
-### Practical Task 1.1P: Selection and Casting (`selection_and_casting/`)
-- **`IfStatement/`**: Implementation of Task 1, converting numbers 1-9 to words using `if-else` blocks.
-- **`SwitchStatement/`**: Implementation of Task 2, using `switch` statements for the same number-to-word conversion.
-- **`Microwave/`**: Task 5, calculating heating times based on the number of items.
-- **`DoCasting/`**: Task 6, demonstrating explicit casting and its effect on division results.
-- **`Analysis.md`**: Detailed analysis and fixes for the Task 3 and 4 code snippets.
-- **`task/`**: Standalone fixed C# files for the debugging snippets in Tasks 3 and 4 (`Snippet1.cs` to `Snippet8.cs`).
-
-### Practical Task 1.2P: Repetition (`repetition/`)
-- **`Repetition.cs`**: Implements Tasks 1, 2, and 3. Calculates the sum and average of numbers 1 to 100 using all three loop types.
-- **`DebuggingAndRewriting.cs`**: Implements logic for Task 4 (debugging) and Task 5 (rewriting `while` loops as `for` loops).
-- **`GuessingNumber.cs`**: A two-player number guessing game with input validation (Task 6).
-- **`DivisibleFour.cs`**: Finds numbers divisible by 4 but not by 5 up to a user limit (Task 7).
-- **`analyze.md`**: Theoretical answers regarding loop differences and a breakdown of Task 4 bugs.
-- **`task/`**: Standalone fixed C# files for the debugging snippets in Task 4 (`Snippet1.cs` to `Snippet7.cs`).
+This repository contains a comprehensive collection of practical tasks for **SIT232: Object-Oriented Development**, implemented in C#. The project progresses from fundamental control structures to advanced Object-Oriented Programming (OOP) concepts, including class design, exception handling, and automated testing.
 
 ## Repository Structure
 
 ```text
 .
-├── 1.1P_request.pdf          # Task 1.1P requirements
-├── 1.2P_request.pdf          # Task 1.2P requirements
-├── README.md                 # Project documentation
-├── selection_and_casting/    # Task 1.1P implementation
-│   ├── Analysis.md           # Analysis for Task 3 & 4
-│   ├── DoCasting/
-│   ├── IfStatement/
-│   ├── Microwave/
-│   ├── SwitchStatement/
-│   └── task/                 # Fixed debugging snippets (Task 3 & 4)
-│       ├── Snippet1.cs to Snippet8.cs
-└── repetition/               # Task 1.2P implementation
-    ├── analyze.md            # Analysis for Task 4
-    ├── DebuggingAndRewriting.cs
-    ├── DivisibleFour.cs
-    ├── GuessingNumber.cs
-    ├── Repetition.cs
-    └── task/                 # Fixed debugging snippets (Task 4)
-        ├── Snippet1.cs to Snippet7.cs
+├── 2.1P.sln                 # Root solution file
+├── README.md                # Main documentation
+├── .vscode/                 # Workspace-specific settings and debug configs
+└── src/                     # Source code directory
+    ├── selection_and_casting/ # Task 1.1P: Logic and type conversion
+    ├── repetition/            # Task 1.2P: Loop structures and games
+    ├── classes_and_objects/   # Task 2.1P: Introduction to classes (Mobile, Employee, Car)
+    └── the_account_class/     # Task 2.2P: Advanced OOP and Banking System
+        ├── Account.cs         # Core business logic for bank accounts
+        ├── TestAccount.cs     # Interactive test driver with try-catch logic
+        ├── TheAccountClass.csproj
+        └── test/              # Automated Test Suite
+            ├── Account.Tests.csproj
+            └── AccountTests.cs # NUnit tests for banking operations
 ```
 
-## Highlights & Key Takeaways
-> [!NOTE]
-> The **`do...while`** loop is used for the user input section in Task 6 because it guarantees that the prompt will be displayed at least once, regardless of the initial condition.
+## Key Reminders & Lessons Learned
 
-> [!IMPORTANT]
-> All user inputs are validated using **`int.TryParse`**. This prevents the application from crashing if a user enters non-numeric text, ensuring a robust and user-friendly experience.
+>[!NOTE]
+>**Encapsulation**: The `Account` class uses private fields (`_balance`, `_name`) to ensure data integrity. Only controlled access is allowed through public methods and properties.
+>[!IMPORTANT]
+>**Defensive Programming**: All critical operations (Deposit/Withdraw) now validate inputs. Never assume a user will provide a positive number or have sufficient funds; always validate before mutating state.
+>[!BUG]
+>**Silent Failures Fixed**: In early versions, `Withdraw` would simply do nothing if the balance was too low. This was refactored to throw an `InvalidOperationException`, ensuring the caller is aware of the failure and can handle it appropriately using `try-catch` blocks.
 
-> [!TIP]
-> **What is the fundamental difference between a `while` and a `for` loop?**
-> A `for` loop is most effective when the number of iterations is known (fixed-count), while a `while` loop is better suited for condition-based iterations where the count is not predetermined.
+## Project Overview
 
-## Implementation Process
+### 1. Fundamentals: Selection, Casting, and Repetition
+- **Selection & Casting**: Decision-making using `if-else` and `switch`, plus explicit type casting.
+- **Repetition**: Exploration of `for`, `while`, and `do-while` loops for calculations and games.
 
-1.  **Requirement Analysis**: Analyzed the provided PDF to extract specific logic requirements and output formatting constraints.
-2.  **Loop Implementation**: Built the core repetition logic, ensuring `do...while` loops were used correctly for scenarios requiring at least one execution (like input validation).
-3.  **Debugging Phase**: Identified common logic errors in provided snippets, such as:
-    - Infinite loops caused by parity mismatches.
-    - Variable scope issues (internal re-declaration).
-    - Uninitialized variables.
-    - Syntax errors in `for` loop headers.
-4.  **Refactoring**: Demonstrated the conversion of `while` loops into more concise `for` loops where appropriate.
-5.  **Validation**: Added input handling (using `int.TryParse`) to ensure the programs are robust against invalid user entries.
+### 2. Classes and Objects
+- **Object Modeling**: Designing real-world entities like Mobiles, Employees, and Cars using C# classes.
 
-## How to Run
-To compile and run any of these files, use the .NET CLI:
+### 3. Banking System: The Account Class
+- **Exception Handling**: Transitioned from silent failures to explicit error reporting.
+- **Automated Testing**: Comprehensive NUnit test suite covering edge cases like insufficient funds and negative input.
+
+## Getting Started
+
+### Prerequisites
+- [.NET SDK 8.0+](https://dotnet.microsoft.com/download)
+- [Visual Studio Code](https://code.visualstudio.com/) with C# Dev Kit.
+
+### How to Run
 ```bash
-csc FileName.cs
-.\FileName.exe
+# Run the banking application
+cd src/the_account_class
+dotnet run
 ```
-*(Note: Ensure you have the .NET SDK or Build Tools installed.)*
+
+### How to Test
+```bash
+# Run the automated NUnit tests
+cd src/the_account_class/test
+dotnet test
+```
+
+## Engineering Standards
+- **Robust Input**: All user inputs are validated using `TryParse` or Exception handling.
+- **Clean Code**: Strict adherence to C# naming conventions and modular architectural patterns.

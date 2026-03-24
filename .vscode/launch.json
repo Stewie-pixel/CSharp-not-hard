@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "TheAccountClass (Debug)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build TheAccountClass",
+            "program": "${workspaceFolder}/src/the_account_class/bin/Debug/net8.0/TheAccountClass.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/the_account_class",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Task3: Car (Debug)",
             "type": "coreclr",
             "request": "launch",
