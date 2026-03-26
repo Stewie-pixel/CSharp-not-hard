@@ -1,4 +1,4 @@
-# SIT232 Object-Oriented Development: Practical Tasks
+# Object-Oriented Development: Practical Tasks with Csharp
 
 This repository contains a comprehensive collection of practical tasks for **SIT232: Object-Oriented Development**, implemented in C#. The project progresses from fundamental control structures to advanced Object-Oriented Programming (OOP) concepts, including class design, exception handling, and automated testing.
 
