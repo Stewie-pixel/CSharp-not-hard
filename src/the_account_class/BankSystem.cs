@@ -10,7 +10,7 @@ namespace TheAccountClass
         Withdraw,
         Deposit,
         Print,
-        Quit
+        Exit
     }
 
     // Handles user interaction and interacts with the Account class.
@@ -38,11 +38,11 @@ namespace TheAccountClass
                     case MenuOption.Print:
                         DoPrint(myAccount);
                         break;
-                    case MenuOption.Quit:
+                    case MenuOption.Exit:
                         Console.WriteLine("Exiting application. Goodbye!");
                         break;
                 }
-            } while (option != MenuOption.Quit);
+            } while (option != MenuOption.Exit);
         }
 
         // Displays the menu and reads the user's choice.
@@ -59,7 +59,7 @@ namespace TheAccountClass
                 Console.WriteLine("1. Withdraw");
                 Console.WriteLine("2. Deposit");
                 Console.WriteLine("3. Print");
-                Console.WriteLine("4. Quit");
+                Console.WriteLine("4. Exit");
                 Console.Write("Select an option (1-4): ");
                 
                 try
