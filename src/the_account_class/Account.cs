@@ -13,29 +13,24 @@ namespace TheAccountClass
             _balance = balance;
         }
 
-        public void Deposit(decimal amount)
+        public bool Deposit(decimal amount)
         {
-            if (amount <= 0)
+            if (amount > 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(amount), "Amount must be positive.");
+                _balance += amount;
+                return true;
             }
-            
-            _balance += amount;
+            return false;
         }
 
-        public void Withdraw(decimal amount)
+        public bool Withdraw(decimal amount)
         {
-            if (amount <= 0)
+            if (amount > 0 && amount <= _balance)
             {
-                throw new ArgumentOutOfRangeException(nameof(amount), "Amount must be positive.");
+                _balance -= amount;
+                return true;
             }
-            
-            if (amount > _balance)
-            {
-                throw new InvalidOperationException("Insufficient funds.");
-            }
-            
-            _balance -= amount;
+            return false;
         }
 
         public void Print()
