@@ -5,7 +5,7 @@ This repository contains a comprehensive collection of practical tasks for **SIT
 ## Repository Structure
 
 ```text
-CSharp-not-hard
+.
 ├── 2.1P.sln                 # Root solution file
 ├── README.md                # Main documentation
 ├── .vscode/                 # Workspace-specific settings and debug configs
