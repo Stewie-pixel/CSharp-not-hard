@@ -228,7 +228,7 @@ namespace ArraysAndLists
             // Only need to iterate through half of the array.
             for (int i = 0; i < array.Length / 2; i++)
             {
-                // Compare element at current index with its counterpart from the end.
+                // Compare element at current index with its opposite end.
                 if (array[i] != array[array.Length - 1 - i])
                 {
                     return false; // Mismatch found, not a palindrome.
