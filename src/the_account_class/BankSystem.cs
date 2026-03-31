@@ -13,7 +13,6 @@ namespace TheAccountClass
         Quit
     }
 
-    // The main class for the banking system console application.
     // Handles user interaction and interacts with the Account class.
     public class BankSystem
     {
