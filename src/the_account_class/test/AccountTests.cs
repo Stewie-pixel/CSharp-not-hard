@@ -12,60 +12,73 @@ namespace Account.Tests
         }
 
         [Test]
-        public void TestWithdrawBeforeDeposit_InsufficientFunds_ThrowsException()
+        public void TestWithdrawBeforeDeposit_InsufficientFunds_ReturnsFalse()
         {
             // Case 1: Withdraw before deposit (or just withdraw > balance on a new account)
             // Arrange
             var account = new TheAccountClass.Account("Test User", 0m);
 
-            // Act & Assert
-            var ex = Assert.Throws<InvalidOperationException>(() => account.Withdraw(50m));
-            Assert.That(ex.Message, Is.EqualTo("Insufficient funds."));
+            // Act
+            bool result = account.Withdraw(50m);
+
+            // Assert
+            Assert.IsFalse(result, "Withdrawal should fail when balance is insufficient.");
         }
 
         [Test]
-        public void TestInvalidDeposit_NegativeAmount_ThrowsException()
+        public void TestInvalidDeposit_NegativeAmount_ReturnsFalse()
         {
             // Case 2: Invalid number (negative deposit)
             // Arrange
             var account = new TheAccountClass.Account("Test User", 100m);
 
-            // Act & Assert
-            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => account.Deposit(-50m));
-            Assert.That(ex.Message, Does.Contain("Amount must be positive"));
+            // Act
+            bool result = account.Deposit(-50m);
+
+            // Assert
+            Assert.IsFalse(result, "Deposit should fail when amount is negative.");
         }
 
         [Test]
-        public void TestInvalidWithdraw_NegativeAmount_ThrowsException()
+        public void TestInvalidWithdraw_NegativeAmount_ReturnsFalse()
         {
             // Case 3: Invalid number (negative withdraw)
             // Arrange
             var account = new TheAccountClass.Account("Test User", 100m);
 
-            // Act & Assert
-            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => account.Withdraw(-10m));
-            Assert.That(ex.Message, Does.Contain("Amount must be positive"));
+            // Act
+            bool result = account.Withdraw(-10m);
+
+            // Assert
+            Assert.IsFalse(result, "Withdrawal should fail when amount is negative.");
         }
 
         [Test]
-        public void TestWithdraw_ValidAmount_DecreasesBalance()
+        public void TestWithdraw_ValidAmount_ReturnsTrue()
         {
             // Standard case
             // Arrange
             var account = new TheAccountClass.Account("Test User", 100m);
 
             // Act
-            account.Withdraw(50m);
+            bool result = account.Withdraw(50m);
 
             // Assert
-            // Since we can't access private _balance directly, and there is no public Balance property,
-            // we rely on the fact that no exception was thrown. 
-            // In a real scenario, we'd add a Balance property or check output, 
-            // but for this specific task, verifying no exception is enough, or checking if we can withdraw again.
-            // Let's assume if it didn't throw, it worked, but better yet:
-            // The class has a Print method. We can't easily capture Console output in unit tests without redirecting.
-            // For now, ensuring no exception is thrown for valid input is a valid test.
-            Assert.DoesNotThrow(() => account.Withdraw(10m));
+            Assert.IsTrue(result, "Withdrawal should succeed for valid amount and sufficient balance.");
+        }
+
+        [Test]
+        public void TestDeposit_ValidAmount_ReturnsTrue()
+        {
+            // Standard case
+            // Arrange
+            var account = new TheAccountClass.Account("Test User", 100m);
+
+            // Act
+            bool result = account.Deposit(50m);
+
+            // Assert
+            Assert.IsTrue(result, "Deposit should succeed for valid positive amount.");
         }
     }
 }
