@@ -1,6 +1,8 @@
 {
     "version": "0.2.0",
     "configurations": [
+
+
         {
             "name": "TheAccountClass (Debug)",
             "type": "coreclr",
@@ -42,6 +44,17 @@
             "program": "${workspaceFolder}/classes_and_objects/src/Task2_Employee/bin/Debug/net10.0/Task2_Employee.dll",
             "args": [],
             "cwd": "${workspaceFolder}/classes_and_objects/src/Task2_Employee",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Arrays_and_Lists (Debug)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/arrays_and_lists/bin/Debug/net10.0/ArraysAndLists.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/arrays_and_lists",
             "stopAtEntry": false,
             "console": "internalConsole"
         }
