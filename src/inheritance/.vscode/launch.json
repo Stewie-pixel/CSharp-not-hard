@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "C#: Part5_Overloading",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\Part5_Overloading\\Part5_Overloading.csproj",
+            "launchConfigurationId": "TargetFramework=;Part5_Overloading"
+        }
+    ]
+}
