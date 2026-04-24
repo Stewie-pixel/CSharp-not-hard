@@ -10,6 +10,7 @@ namespace TheAccountClass
         Withdraw,
         Deposit,
         Print,
+        Transfer,
         Exit
     }
 
@@ -19,8 +20,9 @@ namespace TheAccountClass
         // Initializes an account and runs the main menu loop.
         public static void Main(string[] args)
         {
-            // Create a sample account
+            // Create sample accounts
             Account myAccount = new Account("Jake's Account", 200000.00m);
+            Account otherAccount = new Account("Alice's Account", 50000.00m); // New account for transfers
             MenuOption option;
             
             // Loop until the user chooses to Quit
@@ -37,6 +39,10 @@ namespace TheAccountClass
                         break;
                     case MenuOption.Print:
                         DoPrint(myAccount);
+                        DoPrint(otherAccount); // Print both accounts after any operation
+                        break;
+                    case MenuOption.Transfer:
+                        DoTransfer(myAccount, otherAccount); // Pass both accounts for transfer
                         break;
                     case MenuOption.Exit:
                         Console.WriteLine("Exiting application. Goodbye!");
@@ -58,9 +64,10 @@ namespace TheAccountClass
                 Console.WriteLine("\n--- Banking Menu ---");
                 Console.WriteLine("1. Withdraw");
                 Console.WriteLine("2. Deposit");
-                Console.WriteLine("3. Print");
-                Console.WriteLine("4. Exit");
-                Console.Write("Select an option (1-4): ");
+                Console.WriteLine("3. Print Account Details");
+                Console.WriteLine("4. Transfer"); // New menu item
+                Console.WriteLine("5. Exit");     // Exit is now option 5
+                Console.Write("Select an option (1-5): "); // Updated range
                 
                 try
                 {
@@ -68,13 +75,13 @@ namespace TheAccountClass
                     optionInt = Convert.ToInt32(input);
                     
                     // Validate choice is within range
-                    if (optionInt >= 1 && optionInt <= 4)
+                    if (optionInt >= 1 && optionInt <= 5) // Updated validation range
                     {
                         isValid = true;
                     }
                     else
                     {
-                        Console.WriteLine("Error: Please select a valid option (1-4).");
+                        Console.WriteLine("Error: Please select a valid option (1-5).");
                     }
                 }
                 catch
@@ -95,14 +102,13 @@ namespace TheAccountClass
             try
             {
                 decimal amount = Convert.ToDecimal(Console.ReadLine());
-                if (account.Deposit(amount))
-                {
-                    Console.WriteLine("Success: Amount deposited.");
-                }
-                else
-                {
-                    Console.WriteLine("Failure: Deposit failed. Amount must be positive.");
-                }
+                DepositTransaction transaction = new DepositTransaction(account, amount);
+                transaction.Execute();
+                transaction.Print();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
             }
             catch
             {
@@ -117,14 +123,34 @@ namespace TheAccountClass
             try
             {
                 decimal amount = Convert.ToDecimal(Console.ReadLine());
-                if (account.Withdraw(amount))
-                {
-                    Console.WriteLine("Success: Withdrawal complete.");
-                }
-                else
-                {
-                    Console.WriteLine("Failure: Withdrawal failed. Ensure amount is positive and balance is sufficient.");
-                }
+                WithdrawTransaction transaction = new WithdrawTransaction(account, amount);
+                transaction.Execute();
+                transaction.Print();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            catch
+            {
+                Console.WriteLine("Error: Invalid numeric input for amount.");
+            }
+        }
+
+        // Handles the transfer process by prompting for amounts and accounts.
+        private static void DoTransfer(Account fromAccount, Account toAccount)
+        {
+            Console.Write($"Enter the amount to transfer from {fromAccount.Name} to {toAccount.Name}: ");
+            try
+            {
+                decimal amount = Convert.ToDecimal(Console.ReadLine());
+                TransferTransaction transaction = new TransferTransaction(fromAccount, toAccount, amount);
+                transaction.Execute();
+                transaction.Print();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
             }
             catch
             {
