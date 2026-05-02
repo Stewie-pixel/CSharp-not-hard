@@ -1,0 +1,1 @@
+﻿TestMyPolynomial.Main(args);
