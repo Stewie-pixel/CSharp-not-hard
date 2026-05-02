@@ -1,5 +1,5 @@
 {
-    "dotnet.defaultSolution": "ArraysAndLists.slnx",
+    "dotnet.defaultSolution": "PolymorphismSolution.sln",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
